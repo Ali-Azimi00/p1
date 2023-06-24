@@ -1,13 +1,11 @@
 package com.revature.daos;
 
-import com.revature.models.Statuses;
+import com.revature.models.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface StatusDAO extends JpaRepository<Statuses,Integer> {
+public interface StatusDAO extends JpaRepository<Status,Integer> {
 
 //    List<Statuses> findByStatus (String status);
 
