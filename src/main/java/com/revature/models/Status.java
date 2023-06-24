@@ -4,34 +4,29 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="statuses")
-public class Statuses {
+public class Status {
 
     @Id
-    @Column(name="status_id")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY) //makes the field serial
-    private int Id;
+    private int status_id;
 
     @Column(unique = true, nullable = false)
     private String status_name;
 
-    public Statuses() {
+    public Status(){
+
     }
 
-    public Statuses(String status_name) {
+    public Status(int status_id, String status_name) {
+        this.status_id = status_id;
         this.status_name = status_name;
     }
 
-//    public Statuses(int id, String status_name) {
-//        Id = id;
-//        this.status_name = status_name;
-//    }
-
     public int getId() {
-        return Id;
+        return status_id;
     }
 
     public void setId(int id) {
-        Id = id;
+        status_id = id;
     }
 
     public String getStatus_name() {
@@ -45,7 +40,7 @@ public class Statuses {
     @Override
     public String toString() {
         return "Statuses{" +
-                "Id=" + Id +
+                "Id=" + status_id +
                 ", status_name='" + status_name + '\'' +
                 '}';
     }
