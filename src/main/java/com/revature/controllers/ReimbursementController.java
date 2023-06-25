@@ -23,7 +23,6 @@ public class ReimbursementController {
 
     @PostMapping
     public Reimbursements createTicketHandler(@RequestBody Reimbursements r){
-        ;
         return reimbursementService.createTicket(r);
     }
 

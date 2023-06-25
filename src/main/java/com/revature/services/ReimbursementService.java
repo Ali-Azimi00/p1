@@ -3,6 +3,8 @@ package com.revature.services;
 import com.revature.daos.ReimbursementDAO;
 import com.revature.daos.StatusDAO;
 import com.revature.models.Reimbursements;
+import com.revature.models.User;
+import org.hibernate.tool.schema.spi.ScriptTargetOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +25,13 @@ public class ReimbursementService {
 
     public List<Reimbursements> getAllTickets(){
 //     System.out.println(statusDAO.findAll());
+//        User u = new User();
+//        System.out.println(u.getId());
         return  reimbursementDAO.findAll();
     }
 
     public Reimbursements createTicket(Reimbursements r){
+        r.setStatus(null);
         return reimbursementDAO.save(r);
     };
 
