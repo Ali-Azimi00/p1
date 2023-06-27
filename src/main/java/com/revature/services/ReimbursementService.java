@@ -6,6 +6,7 @@ import com.revature.daos.UserDAO;
 import com.revature.models.Reimbursements;
 import com.revature.models.Statuses;
 import com.revature.models.User;
+import jdk.jshell.Snippet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,12 @@ public class ReimbursementService {
         this.userDAO = userDAO;
     }
 
-    public List<Reimbursements> getAllTickets(){
-        return  reimbursementDAO.findAll();
+    public List<Reimbursements> getAllTicketsByStatus(String status_name){
+        Statuses currentStatus = statusDAO.findByStatusName(status_name);
+
+        System.out.println(reimbursementDAO.findByStatus(currentStatus));
+
+        return reimbursementDAO.findByStatus(currentStatus);
     }
 
     public List<Reimbursements> getAllTicketsByUserId(int id){
@@ -48,7 +53,7 @@ public class ReimbursementService {
             }
 
         }
-        
+
         System.out.println(listByUser);
         return  listByUser;
     }
@@ -75,13 +80,15 @@ public class ReimbursementService {
         return reimbursementDAO.save(r);
     };
 
-    public Reimbursements updateTicket(Reimbursements r){
-
-//        System.out.println("hi " + getAllTickets().get(0).getStatusName());
-
+    public Reimbursements updateTicketStatus(Reimbursements r){
         if(reimbursementDAO.existsById(r.getReimb_id())){
-            System.out.println("Ticket # found and updated");
-            return reimbursementDAO.save(r);
+            System.out.println("Ticket #" +r.getReimb_id() +" found and status updated");
+
+            int reimb_id = r.getReimb_id();
+            Reimbursements rs = reimbursementDAO.getById(reimb_id);
+            rs.setStatus(r.getStatus());
+
+            return reimbursementDAO.save(rs);
         }
         else{
             System.out.println("Ticket #" + r.getReimb_id() + " doesn't exist");
