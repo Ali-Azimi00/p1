@@ -22,6 +22,11 @@ public class ReimbursementController {
         return reimbursementService.getAllTickets();
     }
 
+    @GetMapping("user/{id}")
+    public List<Reimbursements> getAllTicketsHandler(@PathVariable("id") int id){
+        return reimbursementService.getAllTicketsByUserId(id);
+    }
+
     @PostMapping("{id}")
     public Reimbursements createTicketHandler(
             @PathVariable("id") int id,

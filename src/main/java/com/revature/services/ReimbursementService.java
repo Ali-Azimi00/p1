@@ -9,6 +9,7 @@ import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,10 +28,29 @@ public class ReimbursementService {
     }
 
     public List<Reimbursements> getAllTickets(){
-//     System.out.println(statusDAO.findAll());
-//        User u = new User();
-//        System.out.println(u.getId());
         return  reimbursementDAO.findAll();
+    }
+
+    public List<Reimbursements> getAllTicketsByUserId(int id){
+        userDAO.findById(id);
+
+        List<Reimbursements> rList = new ArrayList<>();
+        rList = reimbursementDAO.findAll();
+
+        List<Reimbursements> listByUser = new ArrayList<>();
+
+        for(int i=0; i<rList.toArray().length; i++){
+            Reimbursements currentR = rList.get(i);
+            User currentU = currentR.getUser();
+
+            if(currentU.getId() ==  id){
+                listByUser.add(currentR);
+            }
+
+        }
+        
+        System.out.println(listByUser);
+        return  listByUser;
     }
 
     public Reimbursements createTicket(int id, Reimbursements r){
