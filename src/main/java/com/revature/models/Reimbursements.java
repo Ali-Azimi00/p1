@@ -18,12 +18,11 @@ public class Reimbursements {
     @Column(nullable = false)
     private String description;
 
-
-    private int user_id_fk; //must add one-to-many relationship to
-
+    @ManyToOne
+    private User user; //must add one-to-many relationship to
 
     @ManyToOne
-    private Status status;
+    private Statuses status;
 
     public Reimbursements() {
     }
@@ -33,18 +32,18 @@ public class Reimbursements {
         this.description = description;
     }
 
-    public Reimbursements(int amount, String description, int user_id_fk, Status status_id_fk) {
+    public Reimbursements(int amount, String description, User user, Statuses status_id_fk) {
         this.amount = amount;
         this.description = description;
-        this.user_id_fk = user_id_fk;
+        this.user = user;
         this.status = status_id_fk;
     }
 
-    public Reimbursements(int reimb_id, int amount, String description, int user_id_fk, Status status_id_fk) {
+    public Reimbursements(int reimb_id, int amount, String description, User user, Statuses status_id_fk) {
         this.reimb_id = reimb_id;
         this.amount = amount;
         this.description = description;
-        this.user_id_fk = user_id_fk;
+        this.user = user;
         this.status = status_id_fk;
     }
 
@@ -52,7 +51,7 @@ public class Reimbursements {
         return reimb_id;
     }
 
-    public void getReimb_id(int id) {
+    public void setReimb_id(int id) {
         this.reimb_id = id;
     }
 
@@ -72,19 +71,19 @@ public class Reimbursements {
         this.description = description;
     }
 
-    public int getUser_id_fk() {
-        return user_id_fk;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser_id_fk(int user_id_fk) {
-        this.user_id_fk = user_id_fk;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Status getStatus() {
+    public Statuses getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(Statuses status) {
         this.status = status;
     }
     //    public void setStatus(Status status) {
@@ -104,7 +103,7 @@ public class Reimbursements {
                 "reimb_id=" + reimb_id +
                 ", amount=" + amount +
                 ", description='" + description + '\'' +
-                ", user_id_fk=" + user_id_fk +
+                ", User=" + user +
                 ", status=" + status +
                 '}';
     }
