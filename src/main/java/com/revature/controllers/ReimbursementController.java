@@ -4,6 +4,7 @@ import com.revature.models.Reimbursements;
 import com.revature.services.ReimbursementService;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -21,9 +22,13 @@ public class ReimbursementController {
         return reimbursementService.getAllTickets();
     }
 
-    @PostMapping
-    public Reimbursements createTicketHandler(@RequestBody Reimbursements r){
-        return reimbursementService.createTicket(r);
+    @PostMapping("{id}")
+    public Reimbursements createTicketHandler(
+            @PathVariable("id") int id,
+            @RequestBody Reimbursements r
+    )
+    {
+        return reimbursementService.createTicket(id,r);
     }
 
     @PutMapping

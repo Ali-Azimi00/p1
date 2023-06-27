@@ -4,19 +4,23 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="statuses")
-public class Status {
+public class Statuses {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int status_id;
 
     @Column(unique = true, nullable = false)
     private String status_name;
 
-    public Status(){
+    public Statuses(){
 
     }
+    public Statuses(int status_id) {
+        this.status_id = status_id;
+    }
 
-    public Status(int status_id, String status_name) {
+    public Statuses(int status_id, String status_name) {
         this.status_id = status_id;
         this.status_name = status_name;
     }

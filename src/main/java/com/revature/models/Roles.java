@@ -15,6 +15,9 @@ public class Roles {
     @Column(unique = true)
     private String title;
 
+    public Roles(){
+
+    }
     public Roles(int id, String title) {
         this.id = id;
         this.title = title;

@@ -37,13 +37,24 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName, String username, String password,  Roles roles) {
+    public User(int id, Roles role) {
+        this.id = id;
+        this.roles = role;
+    }
+
+    public User(int id, String firstName, String lastName, Roles roles) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.roles = roles;
+    }
+
+    public User(String firstName, String lastName, String username, String password, Roles roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.roles = roles;
-//        this.roles = roles;
     }
 
 
@@ -103,8 +114,6 @@ public class User {
 //        return roles;
 //
 //    }
-//
-//
 //    public void setRoles(List<Role> roles) {
 //
 //        this.roles = roles;
@@ -112,7 +121,6 @@ public class User {
 //    }
 
     @Override
-
     public String toString() {
         return "User{" +
                 "id=" + id +
