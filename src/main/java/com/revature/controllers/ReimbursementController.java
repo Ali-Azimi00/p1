@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import com.revature.models.Reimbursements;
+import com.revature.models.Statuses;
 import com.revature.services.ReimbursementService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,9 @@ public class ReimbursementController {
         this.reimbursementService = reimbursementService;
     }
 
-    @GetMapping
-    public List<Reimbursements> getAllTicketsHandler(){
-        return reimbursementService.getAllTickets();
+    @GetMapping("manager/{status_name}")
+    public List<Reimbursements> getAllTicketsByStatusHandler(@PathVariable("status_name") String status_name){
+        return reimbursementService.getAllTicketsByStatus(status_name);
     }
 
     @GetMapping("user/{id}")
@@ -37,8 +38,12 @@ public class ReimbursementController {
     }
 
     @PutMapping
-    public Reimbursements updateTicketHandler(@RequestBody Reimbursements r){
-        return reimbursementService.updateTicket(r);
+    public Reimbursements updateTicketStatusHandler(
+//            @PathVariable("id") int id,
+            @RequestBody Reimbursements r
+    ){
+
+        return reimbursementService.updateTicketStatus(r);
     }
 
     @PutMapping("{id}")
@@ -48,6 +53,7 @@ public class ReimbursementController {
     ){
         return reimbursementService.updateTicketContent(id,amtDesc);
     }
+
 
 
 }
