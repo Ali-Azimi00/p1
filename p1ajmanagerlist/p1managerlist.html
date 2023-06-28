@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Manager List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 95vh;
+            margin-top: 15px;
+        }
+
+        .logo {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            font-weight: bold;
+            color: #15558a;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-top: 0px;
+        }
+
+        .employee-container {
+            margin-top: 150px;
+            width: 600px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            margin: 0 auto;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .employee-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .scroll-box {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .employee-container input[type="submit"] {
+            background-color: #15558a;
+            color: white;
+            padding: 12px 20px;
+            margin-top: 20px;
+            border: red;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .employee-container input[type="submit"]:hover {
+            background-color: #0d4675;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            padding: 8px;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="employee-container">
+        <h1 class="logo" , style="text-align: center;">AJ Reimbursements</h1>
+        <h2 style="text-align: center;">Manager List of Reimbursement Tickets</h2>
+        <!-- <div style="height: 200px; overflow: auto;" , class="scroll-box">
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+            <p>
+                list of previous employee tickets
+            </p>
+        </div> -->
+
+        <div class="scroll-box">
+            <table>
+                <thead>
+                    <th>Employee ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Ticket ID</th>
+                    <th>Ticket Status</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <form action="\Users\Joseph Onyenso\Documents\GitHub\p1\p1ajnewticket\p1ajnewticket.html">
+            <input type="submit" value="Add Reimbursement Request">
+        </form>
+
+        <form action="\Users\Joseph Onyenso\Documents\GitHub\p1\p1ajmanagers\p1ajmanagers.html">
+            <input type="submit" value="Back to Pending Tickets">
+        </form>
+
+        <form action="\Users\Joseph Onyenso\Documents\GitHub\p1\p1ajlogin\p1ajlogin.html">
+            <input type="submit" value="Back to Login">
+        </form>
+    </div>
+</body>
+
+</html>
