@@ -20,7 +20,6 @@ public class ReimbursementService {
     private final StatusDAO statusDAO;
     private final UserDAO userDAO;
 
-
     @Autowired
     public ReimbursementService(ReimbursementDAO reimbursementDAO, StatusDAO statusDAO, UserDAO userDAO) {
         this.reimbursementDAO = reimbursementDAO;
@@ -62,20 +61,11 @@ public class ReimbursementService {
         User u = new User();
         u.setId(id);
         r.setUser(u);
-//        Status s = statusDAO.getById(r.getStatus().getId());
-//        System.out.println(s)
-//        r.setStatus(s);
-//        System.out.println(r);
-//
+
         Statuses s= new Statuses();
-        s.setId(1);
+        s.setId(1); //default status is set to pending
         System.out.println(s);
         r.setStatus(s);
-//
-//        User u = userDAO.getById(r.getUser().getId());
-//        System.out.println(u);
-//        r.setUser(u);
-//        System.out.println(r);
 
         return reimbursementDAO.save(r);
     };
@@ -105,15 +95,6 @@ public class ReimbursementService {
 
         return reimbursementDAO.save(rs);
     }
-
-
-//    public Reimbursements updateStatus(int ReimbId, int statId){
-//
-//
-//    };
-
-
-
 
 }
 

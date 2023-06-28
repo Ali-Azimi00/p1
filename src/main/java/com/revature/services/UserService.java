@@ -54,6 +54,10 @@ public class UserService {
         }
     }
 
+    public User getUserByUsername (String user){
+        return userDao.findByUsername(user);
+    }
+
     public User createUser (User u){
         return userDao.save(u);
     }
