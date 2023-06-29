@@ -27,6 +27,10 @@ public class ReimbursementService {
         this.userDAO = userDAO;
     }
 
+    public List<Reimbursements> getAllTickets(){
+        return reimbursementDAO.findAll();
+    }
+
     public List<Reimbursements> getAllTicketsByStatus(String status_name){
         Statuses currentStatus = statusDAO.findByStatusName(status_name);
 
