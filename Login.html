@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>AJ Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 95vh;
+      margin-top: 15px;
+    }
+
+    .logo {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 30px;
+      font-weight: bold;
+      color: #15558a;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-top: 0px;
+    }
+
+    .login-container {
+      margin-top: 150px;
+      width: 400px;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      margin: 0 auto;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-container h2 {
+      margin-bottom: 15px;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .login-container input[type="submit"] {
+      background-color: #15558a;
+      color: white;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border: red;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    .login-container input[type="submit"]:hover {
+      background-color: #0d4675;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <h1 class="logo" , style="text-align: center;">AJ Reimbursements</h1>
+    <h2 style="text-align: center;">Sign In With Credentials</h2>
+      <input id="username" type="text" placeholder="Username" required>
+      <br>
+      <input id="password" type="password" placeholder="Password" required>
+      <br>
+      <input id="loginButton" type="submit" value="Login">
+      <br>
+      <input id="Register" type="submit" value="Register New Employee">
+  </div>
+  <script src="Login.js"></script>
+</body>
+
+</html>

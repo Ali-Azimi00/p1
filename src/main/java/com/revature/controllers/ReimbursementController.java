@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("tickets")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class ReimbursementController {
 
     private final ReimbursementService reimbursementService;
@@ -18,12 +19,17 @@ public class ReimbursementController {
         this.reimbursementService = reimbursementService;
     }
 
+    @GetMapping("manager")
+    public List<Reimbursements> getAllTicketsHandler(){
+        return reimbursementService.getAllTickets();
+    }
+
     @GetMapping("manager/{status_name}")
     public List<Reimbursements> getAllTicketsByStatusHandler(@PathVariable("status_name") String status_name){
         return reimbursementService.getAllTicketsByStatus(status_name);
     }
 
-    @GetMapping("user/{id}")
+    @GetMapping("employee/{id}")
     public List<Reimbursements> getAllTicketsHandler(@PathVariable("id") int id){
         return reimbursementService.getAllTicketsByUserId(id);
     }

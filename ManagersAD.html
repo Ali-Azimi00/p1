@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Financial Manager Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 95vh;
+      margin-top: 15px;
+    }
+
+    .logo {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 30px;
+      font-weight: bold;
+      color: #15558a;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-top: 0px;
+    }
+
+    .manager-container {
+      margin-top: 100px;
+      width: 800px;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      margin: 0 auto;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .manager-container h2 {
+      margin-bottom: 0px;
+    }
+
+    .manager-container form[type="button"] {
+      display: flex;
+      justify-content: center;
+    }
+
+    .manager-container form[type="request"] {
+
+      justify-content: center;
+    }
+
+    .scroll-box {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .manager-container button[type="filter1"] {
+      background-color: #ffff00;
+      color: white;
+      padding: 12px 20px;
+      border: red;
+      border-radius: 4px;
+      width: 25%;
+      margin: 20px 10px;
+    }
+
+    .manager-container button[type="filter1"]:hover {
+      background-color: #ecec00;
+    }
+
+    .manager-container button[type="filter2"] {
+      background-color: #008000;
+      color: white;
+      padding: 12px 20px;
+      border: red;
+      border-radius: 4px;
+      width: 25%;
+      margin: 20px 10px;
+    }
+
+    .manager-container button[type="filter2"]:hover {
+      background-color: #006b00;
+    }
+
+    .manager-container button[type="filter3"] {
+      background-color: #ff0000;
+      color: white;
+      padding: 12px 20px;
+      border: red;
+      border-radius: 4px;
+      width: 25%;
+      margin: 20px 10px;
+    }
+
+    .manager-container button[type="filter3"]:hover {
+      background-color: #ca0000;
+    }
+
+
+    .manager-container input[type="submit"] {
+      background-color: #15558a;
+      color: white;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border: red;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    .manager-container input[type="submit"]:hover {
+      background-color: #0d4675;
+    }
+
+    .ticket-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .scroll-box {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    /* input[type="radio"] {
+      margin-top: 25px;
+      margin-left: 10px;
+    } */
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+      padding: 8px;
+      text-align: center;
+    }
+
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="manager-container">
+
+    <h1 class="logo" , style="text-align: center;">AJ Reimbursements</h1>
+    <h2 style="text-align: center;">List of Current Tickets</h2>
+
+    <form type="button">
+      <button type="filter1" onclick="myPending()">Show Pending</button>
+      <button type="filter2" onclick="myApproved()">Show Approved</button>
+      <button type="filter3" onclick="myDenied()">Show Denied</button>
+    </form>
+
+    <!-- <form type = "request">
+        <div class="ticket-container">
+            <div class = "scroll-box">
+                <p>
+                    list of previous employee tickets
+                </p>
+            </div>
+            <label>
+              <input type="radio" name="ticket" value="pending" checked>
+              Pending
+            </label>
+            <label>
+              <input type="radio" name="ticket" value="approved">
+              Approved
+            </label>
+            <label>
+              <input type="radio" name="ticket" value="denied">
+              Denied
+            </label>
+          </div>
+    </form> -->
+    <!-- <form type = "request">
+      <div class="ticket-container">
+          <div class = "scroll-box">
+              <p>
+                  list of previous employee tickets
+              </p>
+          </div>
+          <label>
+            <input type="radio" name="ticket" value="pending" checked>
+            Pending
+          </label>
+          <label>
+            <input type="radio" name="ticket" value="approved">
+            Approved
+          </label>
+          <label>
+            <input type="radio" name="ticket" value="denied">
+            Denied
+          </label>
+        </div>
+  </form>
+  <form type = "request">
+    <div class="ticket-container">
+        <div class = "scroll-box">
+            <p>
+                list of previous employee tickets
+            </p>
+        </div>
+        <label>
+          <input type="radio" name="ticket" value="pending" checked>
+          Pending
+        </label>
+        <label>
+          <input type="radio" name="ticket" value="approved">
+          Approved
+        </label>
+        <label>
+          <input type="radio" name="ticket" value="denied">
+          Denied
+        </label>
+      </div>
+</form> -->
+
+    <div class="scroll-box">
+      <table>
+        <thead>
+          <th>Employee ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Ticket ID</th>
+          <th>Ticket Status</th>
+          <th>Amount</th>
+          <th>Description</th>
+          <th>Approved</th>
+          <th>Denied</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2</td>
+            <td>Adam</td>
+            <td>Sandler</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Smith</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Mark</td>
+            <td>Johnson</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>John</td>
+            <td>Doe</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <form>
+      <input type="submit" value="Submit Requests">
+    </form>
+
+    <form action="\Users\Joseph Onyenso\Documents\GitHub\p1\p1ajnewticket\p1ajnewticket.html">
+      <input type="submit" value="Go to Tickets">
+    </form>
+
+    <form action="\Users\Joseph Onyenso\Documents\GitHub\p1\p1ajlogin\p1ajlogin.html">
+      <input type="submit" value="Back to Login">
+    </form>
+
+
+  </div>
+  <script src="p1ajmanagers.js"></script>
+</body>
+</html>
