@@ -43,7 +43,7 @@ public class ReimbursementController {
         return reimbursementService.createTicket(id,r);
     }
 
-    @PutMapping
+    @PutMapping("manager/Pending")
     public Reimbursements updateTicketStatusHandler(
 //            @PathVariable("id") int id,
             @RequestBody Reimbursements r

@@ -5,14 +5,22 @@ let loggedInUser = parseJwt(document.cookie)
 console.log('user',loggedInUser)
 console.log('userID',`tickets/employee/${loggedInUser.Id}`)
 
-document.getElementById("submitTicketBtn").onclick= createTicket
+// document.getElementById("submitTicketBtn").onclick= createTicket
+document.getElementById("submitTicketBtn").onclick = newTicket
+document.getElementById("goBack").onclick= goBack
 
+async function goBack(){
+    window.location.href = "Login.html"
+}
+
+async function newTicket(){
+    window.location.href = "NewTicket.html"
+}
 
 
 //GET ALL Tickets
 //Thanks to window.onload, get all courses will happen automatically
 window.onload = async function(){
-
 
     //we need to send a fetch request to get all courses. Remember, fetch requests send GETs by default
     await fetch(url + `tickets/employee/${loggedInUser.Id}`
@@ -22,9 +30,7 @@ window.onload = async function(){
             "Content-Type": "application/json",
             "Authorization": "Bearer: " + document.cookie
     }
-    
-    }
-    )
+    })
 
     .then((response) => response.json()) //extracting the JSON data, and turning it into JS
     .then((data) => {
@@ -41,21 +47,19 @@ window.onload = async function(){
             document.getElementById("tableBody").appendChild(row)
 
             let cell2 = document.createElement("td")
-            cell2.innerText = ticket.user.firstName;
+            cell2.innerText = ticket.description;
             row.appendChild(cell2)
             document.getElementById("tableBody").appendChild(row)
 
             let cell3 = document.createElement("td")
-            cell3.innerText = ticket.description;
+            cell3.innerText = "$" + ticket.amount;
             row.appendChild(cell3)
             document.getElementById("tableBody").appendChild(row)
 
             let cell4 = document.createElement("td")
-            cell4.innerText = "$" + ticket.amount;
+            cell4.innerText = ticket.status.status_name;
             row.appendChild(cell4)
             document.getElementById("tableBody").appendChild(row)
-
-
 
         }
 
@@ -69,41 +73,41 @@ window.onload = async function(){
 }
 //------------------------------------
 
-async function createTicket(){
+// async function createTicket(){
  
 
-    let newTicket={
-        id: document.getElementById("userId").value,
-        description: document.getElementById("ticketDesc").value,
-        amount: document.getElementById("ticketAmout").value
-    }
+//     let newTicket={
+//         id: document.getElementById("userId").value,
+//         description: document.getElementById("ticketDesc").value,
+//         amount: document.getElementById("ticketAmout").value
+//     }
 
-    console.log(newTicket)
+//     console.log(newTicket)
 
-    console.log(document.cookie)
+//     console.log(document.cookie)
 
-    await fetch(url + `tickets/${loggedInUser.Id}`, {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json",
-            "Authorization":"Bearer: " + document.cookie
+//     await fetch(url + `tickets/${loggedInUser.Id}`, {
+//         method: "POST",
+//         headers: {
+//             "Content-type": "application/json",
+//             "Authorization":"Bearer: " + document.cookie
         
-    },
+//     },
 
-        body: JSON.stringify(newTicket)
-    })
-    .then((response)=> response.json())
-    .then((data)=>{
-        console.log(data)
-        alert("Ticket created!")
-    })
-    .catch((error)=>{
-        alert("failed to create" + error)
-    })
+//         body: JSON.stringify(newTicket)
+//     })
+//     .then((response)=> response.json())
+//     .then((data)=>{
+//         console.log(data)
+//         alert("Ticket created!")
+//     })
+//     .catch((error)=>{
+//         alert("failed to create" + error)
+//     })
 
 
 
-}
+// }
 
 
 

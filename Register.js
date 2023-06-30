@@ -24,33 +24,45 @@ async function register(){
         password:password
     }
 
-    console.log("registerDTO",registerDTO)
+
+
+    if(registerDTO.username != '' && registerDTO.password != ''){
+        
+        console.log("registerDTO",registerDTO)
+        
+        await fetch(url + "auth/register",{
+            method:"POST",
+            headers:{
+                "Content-Type": "application/json"
+                
+            },
+            body:JSON.stringify(registerDTO)
+        })
+        .then((data)=>{
+            if(data.status == 400){
+                
+                alert("Error: That username is taken, please try again")
+        
+            }
+            else if(data.status == 201){
+                alert("Successfully Added Employee")
+                goBack()
     
-    await fetch(url + "auth/register",{
-        method:"POST",
-        headers:{
-            "Content-Type": "application/json"
-            
-        },
-        body:JSON.stringify(registerDTO)
-    })
-    .then((data)=>{
-        if(data.status == 400){
-            alert("Username taken, try picking a different name")
+            }
+            console.log(".then data", data)
+        })
+        .catch((error)=>{
+            console.log("Error:",error)
+           // document.getElementById("header").innerHTML = "Login Failed! Try again..."
+        })
 
 
-        }
-        else if(data.status == 201){
-            alert("Successfully Added Employee")
-            goBack()
+    }
+    else{
+        alert("Error: Both a Username and Password are required for registration")
+    }
 
-        }
-        console.log(".then data", data)
-    })
-    .catch((error)=>{
-        console.log("Error:",error)
-       // document.getElementById("header").innerHTML = "Login Failed! Try again..."
-    })
+   
 
 
     

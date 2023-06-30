@@ -4,39 +4,48 @@ let loggedInUser = parseJwt(document.cookie)
 console.log('manager',loggedInUser)
 
 document.getElementById("approveDeny").onclick = adReq
-document.getElementById("goBack").onclick = goBackToLogin
 
+document.getElementById("showAll").onclick = showAllTickets
 document.getElementById("showPending").onclick = showPending
-document.getElementById("showApproved").onclick=showApproved
-document.getElementById("showDenied").onclick=showDenied
+document.getElementById("showDenied").onclick = showDenied
 
-async function showApproved(){
-    window.location.href="ManagerA.html"
+document.getElementById("goBack").onclick= goBack
+
+async function goBack(){
+    window.location.href = "Login.html"
 }
+
 async function showDenied(){
-    window.location.href="ManagerD.html"
+    window.location.href = "ManagerD.html"
 }
+
 async function showPending(){
-    window.location.href="ManagerP.html"
+    window.location.href = "ManagerP.html"
+}
+
+async function showAllTickets(){
+    window.location.href = "Manager.html"
 }
 
 async function adReq(){
     window.location.href = "ManagerAD.html"
 }
 
-async function goBackToLogin(){
-    window.location.href = "Login.html"
+
+
+let filterURL = "";
+console.log("Before", filterURL)
+
+function showAllTickets(){
+    window.location.href = "Manager.html"
 }
-
-
-
 
 
 window.onload = async function(){
 
     
 
-    await fetch(url + `tickets/manager/`,{
+    await fetch(url + `tickets/manager/Approved`,{
         method: "GET",
         headers:{
             "Content-Type": "application/json",

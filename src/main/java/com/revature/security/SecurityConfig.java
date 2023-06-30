@@ -55,7 +55,8 @@ public class SecurityConfig {
 //
 //                .antMatchers("/tickets/manager/**").hasAuthority("Financial Manager")
                 .antMatchers(HttpMethod.GET, "/tickets/manager").hasAuthority("Financial Manager")
-                .antMatchers(HttpMethod.PUT, "/tickets/manager/**").hasAuthority("Financial Manager")
+                .antMatchers(HttpMethod.PUT, "/tickets/manager/Pending/").hasAuthority("Financial Manager")
+//                .antMatchers(HttpMethod.PUT, "/tickets/manager/Pending").permitAll()
 
                 .and()
                 .httpBasic();
