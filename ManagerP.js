@@ -4,39 +4,38 @@ let loggedInUser = parseJwt(document.cookie)
 console.log('manager',loggedInUser)
 
 document.getElementById("approveDeny").onclick = adReq
-document.getElementById("goBack").onclick = goBackToLogin
 
-document.getElementById("showPending").onclick = showPending
-document.getElementById("showApproved").onclick=showApproved
-document.getElementById("showDenied").onclick=showDenied
+document.getElementById("showAll").onclick = showAllTickets
+document.getElementById("showApproved").onclick = showApproved
+document.getElementById("showDenied").onclick = showDenied
+document.getElementById("goBack").onclick= goBack
 
-async function showApproved(){
-    window.location.href="ManagerA.html"
+async function goBack(){
+    window.location.href = "Login.html"
 }
-async function showDenied(){
-    window.location.href="ManagerD.html"
-}
-async function showPending(){
-    window.location.href="ManagerP.html"
-}
+
 
 async function adReq(){
     window.location.href = "ManagerAD.html"
 }
 
-async function goBackToLogin(){
-    window.location.href = "Login.html"
+async function showDenied(){
+    window.location.href = "ManagerD.html"
 }
 
+async function showApproved(){
+    window.location.href = "ManagerA.html"
+}
 
-
+function showAllTickets(){
+    window.location.href = "Manager.html"
+}
 
 
 window.onload = async function(){
 
-    
 
-    await fetch(url + `tickets/manager/`,{
+    await fetch(url + `tickets/manager/Pending`,{
         method: "GET",
         headers:{
             "Content-Type": "application/json",
@@ -77,6 +76,7 @@ window.onload = async function(){
             let cell5 = document.createElement("td")
             cell5.innerText = ticket.status.status_name;
             row.appendChild(cell5)
+            // cell5.setAttribute("style", "background: yellow")
             document.getElementById("tableBody").appendChild(row)
 
             let cell6 = document.createElement("td")
@@ -92,6 +92,19 @@ window.onload = async function(){
         }
     })
 }
+
+
+// let statusColor=(status)=>{
+//     let color = "yellow"
+//     if(status == 'Approved'){
+//         color= "Green"
+//     }
+//     else if(status == "Denied"){
+//         color = "Red"
+//     }
+//     return cell5.setAttribute("style", "background: red")
+// }
+
 
 function parseJwt (token) {
     var base64Url = token.split('.')[1];
